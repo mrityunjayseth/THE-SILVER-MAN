@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Details | The Silver Man</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="gold-accent.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    .product-details {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 2rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+    }
+
+    /* Portrait mode specific styles */
+    @media (orientation: portrait) {
+      .product-details {
+        grid-template-columns: 1fr;
+        padding: 0.5rem;
+        gap: 1rem;
+      }
+      
+      .product-title {
+        font-size: 1.3rem;
+        margin-bottom: 0.5rem;
+      }
+      
+      .product-price {
+        font-size: 1.1rem;
+        margin-bottom: 1rem;
+      }
+      
+      .product-description {
+        margin-bottom: 1rem;
+        font-size: 0.9rem;
+      }
+      
+      .action-buttons {
+        flex-direction: column;
+      }
+      
+      .action-buttons button,
+      .action-buttons a {
+        width: 100%;
+        margin-bottom: 0.5rem;
+        padding: 0.6rem;
+        font-size: 0.9rem;
+      }
+
+      .feedback-section {
+        margin-top: 1rem;
+        padding: 1rem;
+      }
+      
+      .feedback-section textarea {
+        padding: 0.6rem;
+        font-size: 0.9rem;
+      }
+
+    }
+    
+    .product-image {
+      width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    
+    .product-info {
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .product-title {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      font-family: 'Playfair Display', serif;
+    }
+    
+    .product-price {
+      font-size: 1.5rem;
+      color: #666;
+      margin-bottom: 1.5rem;
+    }
+    
+    .rating-container {
+      margin-bottom: 2rem;
+    }
+    
+    .rating-stars {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .star {
+      font-size: 1.5rem;
+      color: #ccc;
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+    
+    .star.active {
+      color: gold;
+    }
+    
+    .product-description {
+      margin-bottom: 2rem;
+      line-height: 1.6;
+    }
+    
+    .action-buttons {
+      display: flex;
+      gap: 1rem;
+    }
+    
+    .back-button {
+      background: #f0f0f0;
+      color: #333;
+    }
+    
+    @media (max-width: 768px) {
+      .product-details {
+        grid-template-columns: 1fr;
+        padding: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header (same as collection.html) -->
+  <header class="glass-navbar">
+    <div class="logo-wrap">
+      <img src="https://img.icons8.com/ios-filled/50/cccccc/diamond--v1.png" alt="Logo">
+      <span class="brand-name">THE SILVER MAN</span>
+    </div>
+    <nav id="navLinks" class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="collection.html">Collections</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+      <a href="cart.html" class="cart-link">🛒 <span id="cart-count">0</span></a>
+    </nav>
+    <div class="hamburger" onclick="toggleMenu()">☰</div>
+  </header>
+
+  <main class="product-details">
+    <div class="product-image-container">
+      <img id="product-image" class="product-image" src="" alt="Product Image">
+    </div>
+    
+    <div class="product-info">
+      <h1 id="product-title" class="product-title">Product Name</h1>
+      <p id="product-price" class="product-price">₹0.00</p>
+      
+      <div class="rating-container">
+        <div class="rating-stars" id="rating-stars">
+          <span class="star" data-rating="1">★</span>
+          <span class="star" data-rating="2">★</span>
+          <span class="star" data-rating="3">★</span>
+          <span class="star" data-rating="4">★</span>
+          <span class="star" data-rating="5">★</span>
+        </div>
+        <p>Rate this product</p>
+      </div>
+      
+      <p id="product-description" class="product-description">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris. Vivamus hendrerit arcu sed erat molestie vehicula.
+      </p>
+      
+      <div class="action-buttons">
+        <button id="add-to-cart" class="add-to-cart">Add to Cart</button>
+        <a href="collection.html" class="add-to-cart back-button">Back to Collection</a>
+      </div>
+      
+      <div class="feedback-section">
+        <h3>Share Your Feedback</h3>
+        <textarea placeholder="Your feedback helps us improve..." rows="4"></textarea>
+        <button class="submit-feedback">Submit Feedback</button>
+      </div>
+    </div>
+  </main>
+
+  <style>
+    .feedback-section {
+      margin-top: 2rem;
+      padding: 1.5rem;
+      background: #f9f9f9;
+      border-radius: 8px;
+    }
+    
+    .feedback-section h3 {
+      margin-bottom: 1rem;
+      color: #333;
+    }
+    
+    .feedback-section textarea {
+      width: 100%;
+      padding: 0.8rem;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      margin-bottom: 1rem;
+      resize: vertical;
+    }
+    
+    .submit-feedback {
+      background: #d4af37;
+      color: white;
+      border: none;
+      padding: 0.8rem 1.5rem;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    
+    .submit-feedback:hover {
+      background: #c19b2e;
+    }
+    
+    @media (max-width: 768px) {
+      .feedback-section {
+        padding: 1rem;
+      }
+    }
+  </style>
+
+  <script>
+    // Orientation detection
+    function handleOrientationChange() {
+      if (window.matchMedia("(orientation: portrait)").matches) {
+        document.body.classList.add('portrait-mode');
+      } else {
+        document.body.classList.remove('portrait-mode');
+      }
+    }
+    
+    // Initial check
+    handleOrientationChange();
+    
+    // Listen for orientation changes
+    window.addEventListener('orientationchange', handleOrientationChange);
+    window.addEventListener('resize', handleOrientationChange);
+
+    // Get product details from URL parameters
+    const urlParams = new URLSearchParams(window.location.search);
+    const productName = urlParams.get('name');
+    const productPrice = urlParams.get('price');
+    const productImage = urlParams.get('image');
+    
+    // Set product details
+    document.getElementById('product-title').textContent = productName;
+    document.getElementById('product-price').textContent = `₹${productPrice}`;
+    document.getElementById('product-image').src = productImage;
+    document.getElementById('product-image').alt = productName;
+    
+    // Rating functionality
+    const stars = document.querySelectorAll('.star');
+    let currentRating = 0;
+    
+    stars.forEach(star => {
+      star.addEventListener('click', () => {
+        const rating = parseInt(star.getAttribute('data-rating'));
+        currentRating = rating;
+        
+        stars.forEach((s, index) => {
+          if (index < rating) {
+            s.classList.add('active');
+          } else {
+            s.classList.remove('active');
+          }
+        });
+        
+        // Here you could save the rating to localStorage or send to server
+        console.log(`User rated ${productName} with ${rating} stars`);
+      });
+    });
+    
+    // Add to cart functionality
+    document.getElementById('add-to-cart').addEventListener('click', () => {
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      cart.push({
+        name: productName,
+        price: productPrice,
+        image: productImage
+      });
+      localStorage.setItem('cart', JSON.stringify(cart));
+      
+      // Update cart count
+      const cartCount = document.getElementById('cart-count');
+      cartCount.textContent = cart.length;
+      
+      alert(`${productName} added to cart!`);
+    });
+    
+    // Initialize cart count
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    document.getElementById('cart-count').textContent = cart.length;
+    
+    // Mobile menu toggle
+    function toggleMenu() {
+      const nav = document.getElementById('navLinks');
+      nav.classList.toggle('active');
+    }
+
+    // Feedback submission
+    document.querySelector('.submit-feedback').addEventListener('click', () => {
+      const feedbackText = document.querySelector('.feedback-section textarea').value;
+      const productName = document.getElementById('product-title').textContent;
+      
+      if (feedbackText.trim() === '') {
+        alert('Please enter your feedback before submitting');
+        return;
+      }
+
+      // Save feedback to localStorage
+      const feedbacks = JSON.parse(localStorage.getItem('productFeedbacks')) || [];
+      feedbacks.push({
+        product: productName,
+        feedback: feedbackText,
+        rating: currentRating,
+        date: new Date().toISOString()
+      });
+      localStorage.setItem('productFeedbacks', JSON.stringify(feedbacks));
+      
+      // Clear the form
+      document.querySelector('.feedback-section textarea').value = '';
+      stars.forEach(star => star.classList.remove('active'));
+      currentRating = 0;
+      
+      alert('Thank you for your feedback!');
+    });
+  </script>
+</body>
+</html>

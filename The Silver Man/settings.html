@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Account Settings | The Silver Man</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="settings-menu show">
+    <div class="settings-header">
+      <h2>Account Settings</h2>
+      <button class="close-settings">✕</button>
+    </div>
+
+    <div class="settings-section">
+      <h3>Account Information</h3>
+      <div class="settings-option">
+        <a href="profile.html">Profile Details</a>
+        <p>Update your personal information</p>
+      </div>
+      <div class="settings-option">
+        <a href="password.html">Change Password</a>
+        <p>Update your login credentials</p>
+      </div>
+    </div>
+
+    <div class="settings-section">
+      <h3>Order Management</h3>
+      <div class="settings-option">
+        <a href="orders.html">Order History</a>
+        <p>View and track your orders</p>
+      </div>
+      <div class="settings-option">
+        <a href="returns.html">Returns & Refunds</a>
+        <p>Manage product returns</p>
+      </div>
+    </div>
+
+    <div class="settings-section">
+      <h3>Theme & Appearance</h3>
+      <div class="settings-option">
+        <div class="theme-selector">
+          <h4>Color Theme</h4>
+          <div class="theme-options">
+            <button class="theme-option golden" data-theme="golden" title="Golden Theme"></button>
+            <button class="theme-option silver" data-theme="silver" title="Silver Theme"></button>
+            <button class="theme-option dark" data-theme="dark" title="Dark Theme"></button>
+          </div>
+        </div>
+      </div>
+      <div class="settings-option">
+        <div class="toggle-option">
+          <h4>Dark Mode</h4>
+          <label class="switch">
+            <input type="checkbox" id="dark-mode-toggle">
+            <span class="slider round"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <div class="settings-section">
+      <h3>Access & Security</h3>
+      <div class="settings-option">
+        <div class="privacy-option">
+          <h4>Account Visibility</h4>
+          <select class="visibility-select">
+            <option value="public">Public</option>
+            <option value="friends">Friends Only</option>
+            <option value="private">Private</option>
+          </select>
+        </div>
+      </div>
+      <div class="settings-option">
+        <div class="toggle-option">
+          <h4>Two-Factor Authentication</h4>
+          <label class="switch">
+            <input type="checkbox" id="2fa-toggle">
+            <span class="slider round"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <div class="settings-section">
+      <h3>Preferences</h3>
+      <div class="settings-option">
+        <a href="notifications.html">Notification Settings</a>
+        <p>Customize your alerts</p>
+      </div>
+      <div class="settings-option">
+        <a href="privacy.html">Privacy Settings</a>
+        <p>Control your data preferences</p>
+      </div>
+    </div>
+
+    <div class="settings-section">
+      <h3>Payment Methods</h3>
+      <div class="settings-option">
+        <a href="payments.html">Saved Payment Methods</a>
+        <p>Manage your payment options</p>
+      </div>
+      <div class="settings-option">
+        <a href="addresses.html">Shipping Addresses</a>
+        <p>Update your delivery locations</p>
+      </div>
+    </div>
+
+    <div class="settings-footer">
+      <a href="help.html" class="help-link">Need Help?</a>
+      <button class="logout-btn">Log Out</button>
+    </div>
+  </div>
+
+  <script>
+    document.querySelector('.close-settings').addEventListener('click', () => {
+      window.history.back();
+    });
+  </script>
+</body>
+</html>

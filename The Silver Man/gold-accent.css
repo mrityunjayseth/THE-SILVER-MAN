@@ -1,0 +1,71 @@
+/* Minimal Gold Accents */
+.collection-card {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+/* Gold top border */
+.collection-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, 
+    rgba(212,175,55,0.3), 
+    rgba(212,175,55,0.7), 
+    rgba(212,175,55,0.3));
+}
+
+/* Gold price styling */
+.price {
+  color: #c9a227;
+  font-weight: 500;
+}
+
+/* Gold hover effects */
+.collection-card:hover {
+  box-shadow: 0 5px 15px rgba(212,175,55,0.1);
+}
+
+/* Gold brand accent */
+.brand-name {
+  color: #c9a227;
+}
+
+/* Enhanced Add to Cart button styling */
+.add-to-cart {
+  background: white;
+  color: #c9a227;
+  border: 1px solid rgba(212,175,55,0.3);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.add-to-cart:hover {
+  background: rgba(212,175,55,0.1);
+  color: #b8951f;
+  border-color: rgba(212,175,55,0.6);
+}
+
+.add-to-cart::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(120deg,
+    transparent,
+    rgba(212,175,55,0.1),
+    transparent);
+  transform: translateX(-100%);
+  transition: 0.5s;
+}
+
+.add-to-cart:hover::after {
+  transform: translateX(100%);
+}

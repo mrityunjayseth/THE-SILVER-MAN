@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Logout - The Silver Man</title>
+  <link rel="stylesheet" href="style.css">
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Clear user session and cart
+      localStorage.removeItem('user');
+      localStorage.removeItem('cart');
+      
+      // Redirect to index page which will show login popup
+      setTimeout(() => {
+        window.location.href = 'index.html';
+      }, 2000);
+    });
+  </script>
+</head>
+<body>
+  <header class="glass-navbar">
+    <!-- Same header as index.html -->
+  </header>
+
+  <main class="container">
+    <div class="logout-message">
+      <h1>You have been logged out</h1>
+      <p>Redirecting to home page...</p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <!-- Same footer as index.html -->
+  </footer>
+</body>
+</html>

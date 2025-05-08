@@ -1,0 +1,474 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" />
+  <title>Your Cart | The Silver Man</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --gold: #b0a160;
+      --silver: #e0e0e0;
+      --dark: #222;
+      --light: #f9f9f9;
+    }
+    
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: var(--light);
+      margin: 0;
+      padding: 0;
+      color: var(--dark);
+    }
+    
+    .cart-container {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 40px;
+      background: white;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+      border-radius: 15px;
+    }
+    
+    .cart-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      font-weight: 500;
+      color: var(--dark);
+      text-align: center;
+      margin-bottom: 40px;
+      letter-spacing: 1px;
+      position: relative;
+      padding-bottom: 15px;
+    }
+    
+    .cart-title:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 2px;
+      background: var(--gold);
+    }
+    
+    .cart-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+      transition: all 0.3s ease;
+    }
+    
+    .cart-item:hover {
+      background: rgba(176, 161, 96, 0.03);
+    }
+    
+    .cart-item img {
+      width: 100%;
+      max-width: 200px;
+      height: auto;
+      aspect-ratio: 1/1;
+      object-fit: cover;
+      border-radius: 8px;
+      margin: 0 0 15px 0;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    @media (min-width: 768px) {
+      .cart-item {
+        flex-direction: row;
+        align-items: center;
+        padding: 25px;
+      }
+      
+      .cart-item img {
+        width: 100px;
+        height: 100px;
+        margin: 0 30px 0 0;
+      }
+    }
+    
+    .cart-info {
+      flex-grow: 1;
+    }
+    
+    .cart-info h4 {
+      font-family: 'Playfair Display', serif;
+      margin: 0 0 5px 0;
+      font-size: 1.3rem;
+      font-weight: 500;
+      color: var(--dark);
+    }
+    
+    .cart-info p {
+      margin: 5px 0;
+      font-size: 0.95rem;
+      color: #666;
+    }
+    
+    .price {
+      font-weight: 500;
+      color: var(--gold) !important;
+    }
+    
+    .remove-btn {
+      background: transparent;
+      border: 1px solid #ddd;
+      color: #999;
+      padding: 8px 20px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+    }
+    
+    .remove-btn:hover {
+      background: #f8f8f8;
+      color: #d33;
+      border-color: #f5c6cb;
+    }
+    
+    .total-section {
+      text-align: right;
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(0,0,0,0.1);
+    }
+    
+    .total-label {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      color: #666;
+      margin-right: 10px;
+    }
+    
+    .total-amount {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: var(--gold);
+    }
+    
+    .checkout-btn {
+      display: block;
+      width: 100%;
+      max-width: 300px;
+      margin: 40px auto 0;
+      padding: 15px 20px;
+      font-size: 1.1rem;
+      background: var(--gold);
+      color: white;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 500;
+      box-shadow: 0 5px 15px rgba(176, 161, 96, 0.3);
+    }
+
+    @media (min-width: 768px) {
+      .checkout-btn {
+        padding: 15px 40px;
+        max-width: none;
+      }
+    }
+    
+    .checkout-btn:hover {
+      background: #9c8c4a;
+      transform: translateY(-2px);
+      box-shadow: 0 7px 20px rgba(176, 161, 96, 0.4);
+    }
+    
+    .checkout-btn:disabled {
+      background: #ccc;
+      transform: none;
+      box-shadow: none;
+      cursor: not-allowed;
+    }
+    
+    .empty-cart {
+      text-align: center;
+      font-size: 1.1rem;
+      color: #999;
+      padding: 50px 0;
+    }
+    
+    @media (max-width: 768px) {
+      .cart-container {
+        padding: 20px;
+      }
+      
+      .cart-item {
+        flex-direction: column;
+        text-align: center;
+      }
+      
+      .cart-item img {
+        margin-right: 0;
+        margin-bottom: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="cart-nav">
+    <a href="index.html" class="back-link">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="19" y1="12" x2="5" y2="12"></line>
+        <polyline points="12 19 5 12 12 5"></polyline>
+      </svg>
+      Back to Shop
+    </a>
+  </nav>
+  <div class="cart-container">
+    <h1 class="cart-title">Your Cart</h1>
+    <div id="cart-items"></div>
+    <div class="total-section">
+      Total: ₹<span id="total-price">0</span>
+    </div>
+    <button class="checkout-btn">Proceed to Checkout</button>
+  </div>
+
+  <script>
+    
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const cartItemsContainer = document.getElementById('cart-items');
+    const totalPriceEl = document.getElementById('total-price');
+    const checkoutBtn = document.querySelector('.checkout-btn');
+
+    // Initialize cart display
+    updateCartDisplay();
+
+    function updateCartDisplay() {
+      cartItemsContainer.innerHTML = '';
+      let total = 0;
+
+      if (cart.length === 0) {
+        cartItemsContainer.innerHTML = '<p class="empty-cart">Your cart is empty</p>';
+        checkoutBtn.disabled = true;
+        checkoutBtn.style.opacity = '0.6';
+        checkoutBtn.style.cursor = 'not-allowed';
+        return;
+      }
+
+      checkoutBtn.disabled = false;
+      checkoutBtn.style.opacity = '1';
+      checkoutBtn.style.cursor = 'pointer';
+
+      cart.forEach((item, index) => {
+        total += item.price;
+
+        const itemEl = document.createElement('div');
+        itemEl.className = 'cart-item';
+        itemEl.innerHTML = `
+          <div class="cart-item-image">
+            ${item.image ? 
+              `<img src="${item.image.startsWith('http') ? item.image : 
+                (item.image.startsWith('images/') ? item.image : 'images/' + item.image)}"
+                 alt="${item.name}"
+                 onerror="this.onerror=null;this.style.display='none';this.parentElement.innerHTML='<div class=\'missing-image\'><svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\"><circle cx=\"12\" cy=\"12\" r=\"10\"/><line x1=\"4.93\" y1=\"4.93\" x2=\"19.07\" y2=\"19.07\"/></svg></div>'">` : 
+              '<div class="missing-image"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/></svg></div>'}
+          </div>
+          
+          <div class="cart-info">
+            <h4>${item.name}</h4>
+            <p>Price: ₹${item.price.toLocaleString('en-IN')}</p>
+            <p>Quantity: 1</p>
+          </div>
+          <button class="remove-btn" onclick="removeItem(${index})">Remove</button>
+        `;
+
+        cartItemsContainer.appendChild(itemEl);
+      });
+
+      totalPriceEl.textContent = total.toLocaleString('en-IN');
+    }
+
+    function removeItem(index) {
+      if (confirm('Are you sure you want to remove this item?')) {
+        cart.splice(index, 1);
+        localStorage.setItem('cart', JSON.stringify(cart));
+        updateCartDisplay();
+        
+        // Update cart count in all tabs
+        localStorage.setItem('cartUpdate', Date.now());
+      }
+    }
+
+    // Handle cart updates from other tabs
+    window.addEventListener('storage', (e) => {
+      if (e.key === 'cartUpdate') {
+        const updatedCart = JSON.parse(localStorage.getItem('cart')) || [];
+        if (updatedCart.length !== cart.length) {
+          cart.length = 0;
+          cart.push(...updatedCart);
+          updateCartDisplay();
+        }
+      }
+    });
+
+    // Checkout button handler
+    checkoutBtn.addEventListener('click', () => {
+      if (cart.length > 0) {
+        window.location.href = 'checkout.html';
+      }
+    });
+
+  </script>
+</body>
+</html>
